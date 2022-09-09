@@ -15,7 +15,7 @@ async def handle(event: events.NewMessage.Event):
     msg = event.message
     msg: telethon.types.Message
     if msg.reply_markup:
-        if len(msg.reply_markup.rows) == 1 and len(msg.reply_markup.rows[0].buttons) == 1:
+        if len(msg.reply_markup.rows) == 1 and len(msg.reply_markup.rows[0].buttons) == 1 and msg.reply_markup.rows[0].buttons[0].url.startswith('https://t.me/TrueMafiaBot?start='):
             gameid = msg.reply_markup.rows[0].buttons[0].url.replace('https://t.me/TrueMafiaBot?start=', '')
             await client.send_message(468253535, '/start ' + gameid)
             print("Вы зарегестрированы в игре!")
